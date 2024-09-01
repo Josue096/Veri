@@ -101,7 +101,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         transaccion.print("Checker: paete2");
                         emul_fifo.push_back(transaccion);
                     end
-                    $display("prueba4 %h", transaction.dato);
+                    
                 end
                 
 
