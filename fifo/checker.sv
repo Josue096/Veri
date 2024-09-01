@@ -30,7 +30,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 if(transaccion.dato == auxiliar.dato) begin
                     to_sb.dato_enviado = auxiliar.dato;
                     to_sb.tiempo_push = auxiliar.tiempo;
-                    to_sb.tiempo_pop = transaccion.dato;
+                    to_sb.tiempo_pop = transaccion.tiempo;
                     to_sb.completado = 1;
                     to_sb.calc_latencia();
                     to_sb.print("Checker: Transaccion Completada");
@@ -69,7 +69,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         
                             to_sb.dato_enviado = auxiliar.dato;
                             to_sb.tiempo_push = auxiliar.tiempo;
-                            to_sb.tiempo_pop = transaccion.dato;
+                            to_sb.tiempo_pop = transaccion.tiempo;
                             to_sb.completado = 1;
                             to_sb.calc_latencia();
                             to_sb.print("Checker: parte1");
