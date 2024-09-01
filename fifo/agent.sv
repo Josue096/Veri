@@ -10,7 +10,7 @@ class agent #(parameter width = 16, parameter depth = 8);
     trans_fifo #(.width(width)) transaccion;
 
     function new;
-        num_transacciones = 2;
+        num_transacciones = 3;
         max_retardo = 10;
     endfunction
 
