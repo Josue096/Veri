@@ -56,6 +56,7 @@ class driver #(parameter width = 16);
                     transaction.tiempo = $time;
                     drv_chkr_mbx.put(transaction);
                     transaction.print("Driver: Transaacion ejecutada");
+                    transaction.dato = vif.dato_out;
 
                 end
 
