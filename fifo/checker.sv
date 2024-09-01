@@ -25,28 +25,27 @@ class checker_c #(parameter width = 16, parameter depth = 8);
             case (transaccion.tipo)
 
                 lectura: begin
-                    if(0 != emul_fifo.size()) begin
-                        auxiliar = emul_fifo.pop_front();
-                    end
-                        if (transaccion.dato == auxiliar.dato) begin
-
-                            to_sb.dato_enviado = auxiliar.dato;
-                            to_sb.tiempo_push = auxiliar.tiempo;
-                            to_sb.tiempo_pop = transaccion.dato;
-                            to_sb.completado = 1;
-                            to_sb.calc_latencia();
-                            to_sb.print("Checker: Transaccion completada");
-                            chkr_sb_mbx.put(to_sb);
-
-                        end else begin
-                            to_sb.tiempo_pop = transaccion.tiempo;
-                            to_sb.underflow = 1;
-                            to_sb.print("Checker: Underflow");
-                            chkr_sb_mbx.put(to_sb);
-                        end
-
-                    
-
+                if(0 !== emul_fifo.size()) begin 
+                auxiliar = emul_fifo.pop_front();
+                if(transaccion.dato == auxiliar.dato) begin
+                    to_sb.dato_enviado = auxiliar.dato;
+                    to_sb.tiempo_push = auxiliar.tiempo;
+                    to_sb.tiempo_pop = transaccion.dato;
+                    to_sb.completado = 1;
+                    to_sb.calc_latencia();
+                    to_sb.print("Checker: Transaccion Completada");
+                    chkr_sb_mbx.put(to_sb);
+                end else begin
+                    transaccion.print("Checker: Error el dato de la transacción no calza con el esperado");
+                     $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
+                     $finish;
+                     end 
+                end else begin 
+                    to_sb.tiempo_pop = transaccion.tiempo;
+                    to_sb.underflow = 1;
+                    to_sb.print("Checker: Underflow");
+                    chkr_sb_mbx.put(to_sb);
+                end
                 end
 
                 escritura: begin
@@ -65,27 +64,28 @@ class checker_c #(parameter width = 16, parameter depth = 8);
 
                 end
                 lectura_escritura: begin
-                    if(0 != emul_fifo.size()) begin
+                    if(0 !== emul_fifo.size()) begin 
                         auxiliar = emul_fifo.pop_front();
-                    end
-                        if (transaccion.dato == auxiliar.dato) begin
-
+                        if(transaccion.dato == auxiliar.dato) begin
                             to_sb.dato_enviado = auxiliar.dato;
                             to_sb.tiempo_push = auxiliar.tiempo;
                             to_sb.tiempo_pop = transaccion.dato;
                             to_sb.completado = 1;
                             to_sb.calc_latencia();
-                            to_sb.print("Checker: Transaccion completada");
-                            chkr_sb_mbx.put(to_sb);
-
+                            to_sb.print("Checker: parte1");
+                            //chkr_sb_mbx.put(to_sb);
                         end else begin
-                            to_sb.tiempo_pop = transaccion.tiempo;
-                            to_sb.underflow = 1;
-                            to_sb.print("Checker: Underflow");
-                            chkr_sb_mbx.put(to_sb);
-                        end
+                            transaccion.print("Checker: Error el dato de la transacción no calza con el esperado");
+                            $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
+                            $finish;
+                        end 
+                    end else begin 
+                        to_sb.tiempo_pop = transaccion.tiempo;
+                        to_sb.underflow = 1;
+                        to_sb.print("Checker: Underflow");
+                        //chkr_sb_mbx.put(to_sb);
+                    end
 
-                    
                     if (emul_fifo.size() == depth) begin
                         auxiliar = emul_fifo.pop_front();
                         to_sb.dato_enviado = auxiliar.dato;
@@ -95,7 +95,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         chkr_sb_mbx.put(to_sb);
                         emul_fifo.push_back(transaccion);
                     end else begin
-                        transaccion.print("Checker: Escritura");
+                        transaccion.print("Checker: paete2");
                         emul_fifo.push_back(transaccion);
                     end
 

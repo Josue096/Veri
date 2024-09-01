@@ -51,10 +51,7 @@ class driver #(parameter width = 16);
                 lectura_escritura: begin
                     vif.push = 1;
                     transaction.tiempo = $time;
-                    drv_chkr_mbx.put(transaction);
-                    
                     transaction.dato = vif.dato_out;
-                    transaction.tiempo = $time;
                     @(posedge vif.clk);
                     vif.pop = 1;
                     drv_chkr_mbx.put(transaction);
