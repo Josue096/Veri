@@ -1,4 +1,4 @@
-typedef enum {lectura, escritura, reset} tipo_trans;
+typedef enum {lectura, escritura, reset, lectura_escritura} tipo_trans;
 
 
 class trans_fifo #(parameter width = 16);

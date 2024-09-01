@@ -41,6 +41,14 @@ class agent #(parameter width = 16, parameter depth = 8);
                             transaccion.print("Agente: Transaccion creada");
                             agnt_drv_mbx.put(transaccion);
                         end 
+                        for (int i = 0; i < num_transacciones; i++) begin
+                            transaccion = new;
+                            transaccion.randomize();
+                            tpo_spec = lectura_escritura;
+                            transaccion.tipo = tpo_spec;
+                            transaccion.print("Agente: Transaccion creada");
+                            agnt_drv_mbx.put(transaccion);
+                        end 
                     end
 
                     trans_aleatoria: begin
