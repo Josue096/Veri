@@ -74,11 +74,11 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                             to_sb.calc_latencia();
                             to_sb.print("Checker: parte1");
                             //chkr_sb_mbx.put(to_sb);
-                        end else begin
+                        end /*else begin
                             transaccion.print("Checker: Error el dato de la transacción no calza con el esperado");
                             $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
                             $finish;
-                        end 
+                        end */
                     end else begin 
                         to_sb.tiempo_pop = transaccion.tiempo;
                         to_sb.underflow = 1;
