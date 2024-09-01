@@ -53,14 +53,13 @@ class driver #(parameter width = 16);
                     transaction.tiempo = $time;
                     @(posedge vif.clk);
                     vif.pop = 1;
-                    vif.push = 1;
-                    $display("prueba1 %h", transaction.dato);
-                    drv_chkr_mbx.put(transaction);
                     $display("prueba2 %h", transaction.dato);
-                    transaction.dato = vif.dato_in;
-                    
+                    drv_chkr_mbx.put(transaction);
+                    vif.push = 1;
                     transaction.tiempo = $time;
                     drv_chkr_mbx.put(transaction);
+                    transaction.tiempo = $time;
+                    
                     transaction.print("Driver: Transaacion ejecutada");
 
                 end
