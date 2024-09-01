@@ -43,6 +43,7 @@ class agent #(parameter width = 16, parameter depth = 8);
                         end 
                         for (int i = 0; i < num_transacciones; i++) begin
                             transaccion = new;
+                            transaccion.max_retardo = max_retardo;
                             transaccion.randomize();
                             tpo_spec = lectura_escritura;
                             transaccion.tipo = tpo_spec;
