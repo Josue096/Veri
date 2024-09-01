@@ -48,10 +48,10 @@ class driver #(parameter width = 16);
                     transaction.print("Driver: Transaccion ejecutada");
                 end
 
-                lectura_escritura: begin
+                lectura_escritura: begin                    
+                    transaction.dato = vif.dato_out;
                     vif.push = 1;
                     transaction.tiempo = $time;
-                    transaction.dato = vif.dato_out;
                     @(posedge vif.clk);
                     vif.pop = 1;
                     drv_chkr_mbx.put(transaction);
