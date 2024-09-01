@@ -54,9 +54,9 @@ class driver #(parameter width = 16);
                     @(posedge vif.clk);
                     vif.pop = 1;
                     vif.push = 1;
-                    $display("prueba1 %d", transaction.dato);
+                    $display("prueba1 %h", transaction.dato);
                     drv_chkr_mbx.put(transaction);
-                    $display("prueba2 %d", transaction.dato);
+                    $display("prueba2 %h", transaction.dato);
                     transaction.dato = vif.dato_in;
                     
                     transaction.tiempo = $time;
