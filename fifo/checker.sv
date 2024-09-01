@@ -85,7 +85,6 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         to_sb.print("Checker: Underflow");
                         //chkr_sb_mbx.put(to_sb);
                     end
-                    $display("prueba3 %h", transaction.dato);
                     drv_chkr_mbx.get(transaccion);
 
 
