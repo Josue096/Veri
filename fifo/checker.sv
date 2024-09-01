@@ -27,6 +27,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 lectura: begin
                     if(0 != emul_fifo.size()) begin
                         auxiliar = emul_fifo.pop_front();
+                    end
                         if (transaccion.dato == auxiliar.dato) begin
 
                             to_sb.dato_enviado = auxiliar.dato;
@@ -44,7 +45,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                             chkr_sb_mbx.put(to_sb);
                         end
 
-                    end
+                    
 
                 end
 
@@ -63,10 +64,10 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                     end
 
                 end
-
                 lectura_escritura: begin
                     if(0 != emul_fifo.size()) begin
                         auxiliar = emul_fifo.pop_front();
+                    end
                         if (transaccion.dato == auxiliar.dato) begin
 
                             to_sb.dato_enviado = auxiliar.dato;
@@ -84,6 +85,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                             chkr_sb_mbx.put(to_sb);
                         end
 
+                    
                     if (emul_fifo.size() == depth) begin
                         auxiliar = emul_fifo.pop_front();
                         to_sb.dato_enviado = auxiliar.dato;
@@ -97,9 +99,8 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         emul_fifo.push_back(transaccion);
                     end
 
-                    end
-
                 end
+                
 
                 reset: begin
                     contador_auxiliar = emul_fifo.size();
