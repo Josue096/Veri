@@ -1,0 +1,9 @@
+/mnt/vol_NFS_rh003/Est_Verif_II2024/QUIROS_BARRANTES/Veri/fifo/agent.sv
+/mnt/vol_NFS_rh003/Est_Verif_II2024/QUIROS_BARRANTES/Veri/fifo/ambiente.sv
+/mnt/vol_NFS_rh003/Est_Verif_II2024/QUIROS_BARRANTES/Veri/fifo/checker.sv
+/mnt/vol_NFS_rh003/Est_Verif_II2024/QUIROS_BARRANTES/Veri/fifo/driver.sv
+/mnt/vol_NFS_rh003/Est_Verif_II2024/QUIROS_BARRANTES/Veri/fifo/fifo.sv
+/mnt/vol_NFS_rh003/Est_Verif_II2024/QUIROS_BARRANTES/Veri/fifo/interface_transactions.sv
+/mnt/vol_NFS_rh003/Est_Verif_II2024/QUIROS_BARRANTES/Veri/fifo/score_board.sv
+/mnt/vol_NFS_rh003/Est_Verif_II2024/QUIROS_BARRANTES/Veri/fifo/test.sv
+/mnt/vol_NFS_rh003/Est_Verif_II2024/QUIROS_BARRANTES/Veri/fifo/test_bench.sv
