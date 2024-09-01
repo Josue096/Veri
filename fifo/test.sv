@@ -52,13 +52,13 @@ class test #(parameter width = 16, parameter depth = 8);
         test_agent_mbx.put(instr_agent);
         $display("[%g] Test: Enviada la cuarta instruccion al agente secuencia %g de transaccion_aleatoria", $time, num_transacciones);
 
-        #2000
+        #3000
         $display("[%g] Test: Se alcanza el tiempo limite de la prueba", $time);
         instr_sb = retardo_promedio;
         test_sb_mbx.put(instr_sb);
         instr_sb = reporte;
         test_sb_mbx.put(instr_sb);
-        #20
+        #50
         $finish;
 
     endtask
