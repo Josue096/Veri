@@ -75,7 +75,6 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                             to_sb.print("Checker: parte1");
                             //chkr_sb_mbx.put(to_sb);
                         
-                    end 
                     end else begin 
                         to_sb.tiempo_pop = transaccion.tiempo;
                         to_sb.underflow = 1;
