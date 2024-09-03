@@ -113,6 +113,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 end
 
             endcase
+            $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
 
         end
 
