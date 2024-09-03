@@ -49,9 +49,9 @@ class driver #(parameter width = 16);
                 end
 
                 lectura_escritura: begin  
-                    vif.pop = 1;
-                    @(posedge vif.clk);                  
                     
+                    @(posedge vif.clk);                  
+                    vif.pop = 1;
                     vif.push = 1;
                     transaction.tiempo = $time;
                     transaction.dato = vif.dato_in;
