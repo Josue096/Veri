@@ -48,7 +48,8 @@ class driver #(parameter width = 16);
                     transaction.print("Driver: Transaccion ejecutada");
                 end
 
-                lectura_escritura: begin                    
+                lectura_escritura: begin  
+                    @(posedge vif.clk);                  
                     vif.pop = 1;
                     vif.push = 1;
                     transaction.tiempo = $time;
