@@ -62,8 +62,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         transaccion.print("Checker: Escritura");
                         emul_fifo.push_back(transaccion);
                     end
-                    transaccion.print("Checker: escr");
-                     $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
+                    
 
                 end
                 lectura_escritura: begin
