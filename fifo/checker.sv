@@ -49,8 +49,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 end
 
                 escritura: begin
-                    transaccion.print("Checker: escr");
-                     $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
+                    
                     if (emul_fifo.size() == depth) begin
                         auxiliar = emul_fifo.pop_front();
                         to_sb.dato_enviado = auxiliar.dato;
@@ -63,11 +62,12 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         transaccion.print("Checker: Escritura");
                         emul_fifo.push_back(transaccion);
                     end
+                    transaccion.print("Checker: escr");
+                     $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
 
                 end
                 lectura_escritura: begin
-                    transaccion.print("Checker: lec_esc");
-                     $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
+                    
                     auxiliar = emul_fifo.pop_front();  
                     if(0 !== emul_fifo.size()) begin 
                                       
@@ -85,8 +85,9 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         to_sb.print("Checker: Underflow");
                         
                     end
+                    transaccion.print("Checker: lec_esc");
+                     $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
                     
-                    transaccion.print("Checker: paete2");
                     emul_fifo.push_back(transaccion);
                     chkr_sb_mbx.put(to_sb);
                     
