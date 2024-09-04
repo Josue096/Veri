@@ -68,7 +68,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 lectura_escritura: begin
                     
                     auxiliar = emul_fifo.pop_front();                   
-                    if(0 !== emul_fifo.size()) begin 
+                    //if(0 !== emul_fifo.size()) begin 
                                       
                         to_sb.dato_enviado = auxiliar.dato;
                         to_sb.tiempo_push = auxiliar.tiempo;
@@ -79,14 +79,14 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         emul_fifo.push_back(transaccion);
                         
                         
-                    end else begin 
+                    //end else begin 
                         //to_sb.dato_enviado = auxiliar.dato;
                         
-                        to_sb.tiempo_pop = transaccion.tiempo;
-                        to_sb.underflow = 1;
-                        to_sb.print("Checker: Underflow");
+                        //to_sb.tiempo_pop = transaccion.tiempo;
+                        //to_sb.underflow = 1;
+                        //to_sb.print("Checker: Underflow");
                         
-                    end
+                    //end
                     chkr_sb_mbx.put(to_sb);
                     
                                      
