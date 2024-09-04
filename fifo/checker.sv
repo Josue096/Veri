@@ -66,26 +66,53 @@ class checker_c #(parameter width = 16, parameter depth = 8);
 
                 end
                 lectura_escritura: begin
-                    auxiliar = emul_fifo.pop_front();
-                                       
-                    if(0 !== emul_fifo.size()) begin 
+                    if (emul_fifo.size() == depth) begin
+                        to_sb.overflow = 1;
+                        to_sb.print("Checker: Overflow");
+                        auxiliar = emul_fifo.pop_front();
+                    
+                        if(0 !== emul_fifo.size()) begin 
                                       
-                        to_sb.dato_enviado = auxiliar.dato;
-                        to_sb.tiempo_push = auxiliar.tiempo;
-                        to_sb.tiempo_pop = transaccion.tiempo;
-                        to_sb.completado = 1;
-                        to_sb.calc_latencia();
-                        to_sb.print("Checker: parte1");
+                            to_sb.dato_enviado = auxiliar.dato;
+                            to_sb.tiempo_push = auxiliar.tiempo;
+                            to_sb.tiempo_pop = transaccion.tiempo;
+                            to_sb.completado = 1;
+                            to_sb.calc_latencia();
+                            to_sb.print("Checker: parte1");
                         
                         
-                    end else begin 
-                        to_sb.tiempo_pop = transaccion.tiempo;
-                        to_sb.underflow = 1;
-                        to_sb.print("Checker: Underflow");
+                        end else begin 
+                            to_sb.tiempo_pop = transaccion.tiempo;
+                            to_sb.underflow = 1;
+                            to_sb.print("Checker: Underflow");
+                        
+                        end
+                        chkr_sb_mbx.put(to_sb);
+                        emul_fifo.push_back(transaccion);
+                    end else begin
+                        emul_fifo.push_back(transaccion);
+                        auxiliar = emul_fifo.pop_front();
+                    
+                        if(0 !== emul_fifo.size()) begin 
+                                        
+                            to_sb.dato_enviado = auxiliar.dato;
+                            to_sb.tiempo_push = auxiliar.tiempo;
+                            to_sb.tiempo_pop = transaccion.tiempo;
+                            to_sb.completado = 1;
+                            to_sb.calc_latencia();
+                            to_sb.print("Checker: parte1");
+                            
+                            
+                        end else begin 
+                            to_sb.tiempo_pop = transaccion.tiempo;
+                            to_sb.underflow = 1;
+                            to_sb.print("Checker: Underflow");
+                            
+                        end
                         
                     end
-                    chkr_sb_mbx.put(to_sb);
-                    emul_fifo.push_back(transaccion);                 
+                    
+                                     
 
                 end
                 
