@@ -67,18 +67,16 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 end
                 lectura_escritura: begin
                     
-                    auxiliar = emul_fifo.pop_front();   
-                    to_sb.tiempo_pop = transaccion.tiempo;
-                    to_sb.completado = 1;
-                    to_sb.calc_latencia();
-                    to_sb.print("Checker: parte1");                
-                    if(0 !== emul_fifo.size()) begin
-                        to_sb.dato_enviado = auxiliar.dato;
+                    auxiliar = emul_fifo.pop_front();                   
+                    //if(0 !== emul_fifo.size()) begin 
                                       
-                        
+                        to_sb.dato_enviado = auxiliar.dato;
                         to_sb.tiempo_push = auxiliar.tiempo;
-                    end
-                    else emul_fifo.push_back(transaccion);
+                        to_sb.tiempo_pop = transaccion.tiempo;
+                        to_sb.completado = 1;
+                        to_sb.calc_latencia();
+                        to_sb.print("Checker: parte1");
+                        emul_fifo.push_back(transaccion);
                         
                         
                     //end else begin 
