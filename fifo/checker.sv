@@ -67,8 +67,9 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 end
                 lectura_escritura: begin
                     auxiliar = emul_fifo.pop_front();
-                    emul_fifo.push_back(transaccion);
-                    chkr_sb_mbx.put(to_sb);
+
+                    
+                    
                     
                       
                     if(0 !== emul_fifo.size()) begin 
@@ -87,9 +88,10 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         to_sb.print("Checker: Underflow");
                         
                     end
+                    chkr_sb_mbx.put(to_sb);
                     transaccion.print("Checker: ");
                     $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
-                    
+                    emul_fifo.push_back(transaccion);
                     
                     
                     
