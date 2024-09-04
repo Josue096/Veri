@@ -76,6 +76,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         to_sb.completado = 1;
                         to_sb.calc_latencia();
                         to_sb.print("Checker: parte1");
+                        emul_fifo.push_back(transaccion);
                         
                         
                     end else begin 
@@ -85,7 +86,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         
                     end
                     chkr_sb_mbx.put(to_sb);
-                    emul_fifo.push_back(transaccion);
+                    
                                      
 
                 end
