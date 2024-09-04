@@ -94,8 +94,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                     chkr_sb_mbx.put(to_sb);
                     emul_fifo.push_back(transaccion);
                     
-                    transaccion.print("Checker: ");
-                    $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
+                    
                     
                     
                     
