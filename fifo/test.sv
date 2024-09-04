@@ -47,6 +47,7 @@ class test #(parameter width = 16, parameter depth = 8);
             ambiente_inst.agent_inst.dto_spec = {width/4{4'h5}};
             instr_agent = trans_especifica;
             test_agent_mbx.put(instr_agent);
+            $display("[%g] escrt", $time);
         end 
         
 
@@ -57,9 +58,10 @@ class test #(parameter width = 16, parameter depth = 8);
         test_agent_mbx.put(instr_agent);
         $display("[%g] Test: Enviada la tercera instruccion al agente transaccion especifica", $time);
 
-        instr_agent = sec_trans_aleatorias;
+        /*instr_agent = sec_trans_aleatorias;
         test_agent_mbx.put(instr_agent);
         $display("[%g] Test: Enviada la cuarta instruccion al agente secuencia %g de transaccion_aleatoria", $time, num_transacciones);
+        */
 
         #3000
         $display("[%g] Test: Se alcanza el tiempo limite de la prueba", $time);
