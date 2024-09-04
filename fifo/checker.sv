@@ -81,8 +81,8 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         
                         
                     end else begin 
-                        auxiliar = emul_fifo.pop_front(); 
-                        emul_fifo.push_back(transaccion);
+                        //auxiliar = emul_fifo.pop_front(); 
+                        //emul_fifo.push_back(transaccion);
                         to_sb.tiempo_pop = transaccion.tiempo;
                         to_sb.completado = 1;
                         to_sb.calc_latencia();
