@@ -51,12 +51,13 @@ class test #(parameter width = 16, parameter depth = 8);
         end 
         
 
-        ambiente_inst.agent_inst.ret_spec = 3;
+        /*ambiente_inst.agent_inst.ret_spec = 3;
         ambiente_inst.agent_inst.tpo_spec = escritura;
         ambiente_inst.agent_inst.dto_spec = {width/4{4'h5}};
         instr_agent = trans_especifica;
         test_agent_mbx.put(instr_agent);
         $display("[%g] Test: Enviada la tercera instruccion al agente transaccion especifica", $time);
+        */
 
         /*instr_agent = sec_trans_aleatorias;
         test_agent_mbx.put(instr_agent);
