@@ -67,9 +67,10 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 end
                 lectura_escritura: begin
                     
-                    auxiliar = emul_fifo.pop_front();                   
+                                     
                     if(0 !== emul_fifo.size()) begin 
-                                      
+                        emul_fifo.push_back(transaccion);
+                        auxiliar = emul_fifo.pop_front();                
                         to_sb.dato_enviado = auxiliar.dato;
                         to_sb.tiempo_push = auxiliar.tiempo;
                         to_sb.tiempo_pop = transaccion.tiempo;
@@ -80,6 +81,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         
                         
                     end else begin 
+                        emul_fifo.push_back(transaccion);
                         to_sb.tiempo_pop = transaccion.tiempo;
                         to_sb.completado = 1;
                         to_sb.calc_latencia();
@@ -87,7 +89,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         
                         
                     end
-                    emul_fifo.push_back(transaccion);
+                    
                     chkr_sb_mbx.put(to_sb);
                     
                                      
