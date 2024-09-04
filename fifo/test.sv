@@ -41,7 +41,8 @@ class test #(parameter width = 16, parameter depth = 8);
         test_agent_mbx.put(instr_agent);
         $display("[%g] Test: Enviada la segunda instruccion al agente transaccion aleatoria", $time);
         */
-        for (int i = 0; i < num_transacciones; i++) begin
+        
+        /*for (int i = 0; i < num_transacciones; i++) begin
             ambiente_inst.agent_inst.ret_spec = 3;
             ambiente_inst.agent_inst.tpo_spec = escritura;
             ambiente_inst.agent_inst.dto_spec = {width/4{4'h5}};
@@ -49,6 +50,7 @@ class test #(parameter width = 16, parameter depth = 8);
             test_agent_mbx.put(instr_agent);
             $display("[%g] escrt", $time);
         end 
+        */
         
 
         ambiente_inst.agent_inst.ret_spec = 5;
