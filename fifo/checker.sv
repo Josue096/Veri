@@ -80,7 +80,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         
                         
                     end else begin 
-                        emul_fifo.push_back();
+                        
                         to_sb.tiempo_pop = transaccion.tiempo;
                         to_sb.underflow = 1;
                         to_sb.print("Checker: Underflow");
