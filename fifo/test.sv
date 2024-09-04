@@ -41,7 +41,7 @@ class test #(parameter width = 16, parameter depth = 8);
         test_agent_mbx.put(instr_agent);
         $display("[%g] Test: Enviada la segunda instruccion al agente transaccion aleatoria", $time);
         */
-        begin
+        fork 
         for (int i = 0; i < num_transacciones; i++) begin
             ambiente_inst.agent_inst.ret_spec = 3;
             ambiente_inst.agent_inst.tpo_spec = escritura;
@@ -50,7 +50,7 @@ class test #(parameter width = 16, parameter depth = 8);
             test_agent_mbx.put(instr_agent);
             $display("[%g] escrt", $time);
         end 
-        
+        join
 
         ambiente_inst.agent_inst.ret_spec = 3;
         ambiente_inst.agent_inst.tpo_spec = lectura_escritura;
@@ -58,7 +58,7 @@ class test #(parameter width = 16, parameter depth = 8);
         instr_agent = trans_especifica;
         test_agent_mbx.put(instr_agent);
         $display("[%g] Test: Enviada la tercera instruccion al agente transaccion especifica", $time);
-        end
+        
 
         /*instr_agent = sec_trans_aleatorias;
         test_agent_mbx.put(instr_agent);
