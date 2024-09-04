@@ -66,7 +66,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
 
                 end
                 lectura_escritura: begin
-                    emul_fifo.push_back(transaccion);
+                    
                     auxiliar = emul_fifo.pop_front();                   
                     if(0 !== emul_fifo.size()) begin 
                                       
@@ -85,6 +85,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         
                     end
                     chkr_sb_mbx.put(to_sb);
+                    emul_fifo.push_back(transaccion);
                                      
 
                 end
