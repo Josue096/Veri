@@ -68,9 +68,9 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 lectura_escritura: begin
                     
                     auxiliar = emul_fifo.pop_front();                   
-                    //if(0 !== emul_fifo.size()) begin 
+                    if(0 !== emul_fifo.size()) to_sb.dato_enviado = auxiliar.dato;
                                       
-                        to_sb.dato_enviado = auxiliar.dato;
+                        
                         to_sb.tiempo_push = auxiliar.tiempo;
                         to_sb.tiempo_pop = transaccion.tiempo;
                         to_sb.completado = 1;
