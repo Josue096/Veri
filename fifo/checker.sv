@@ -36,7 +36,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                     to_sb.print("Checker: Transaccion Completada");
                     chkr_sb_mbx.put(to_sb);
                 end else begin
-                    transaccion.print("Checker: Error el dato de la transacción no calza con el esperado");
+                    transaccion.print("Checker: ");
                      $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
                      $finish;
                      end 
@@ -87,7 +87,8 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         to_sb.print("Checker: Underflow");
                         
                     end
-                    
+                    transaccion.print("Checker: ");
+                    $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
                     
                     
                     
