@@ -67,6 +67,19 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                 end
                 lectura_escritura: begin
                     auxiliar = emul_fifo.pop_front();
+                    if (emul_fifo.size() == depth) begin
+                        auxiliar = emul_fifo.pop_front();
+                        to_sb.dato_enviado = auxiliar.dato;
+                        to_sb.tiempo_push = auxiliar.tiempo;
+                        to_sb.overflow = 1;
+                        to_sb.print("Checker: Overflow");
+                        chkr_sb_mbx.put(to_sb);
+                        emul_fifo.push_back(transaccion);
+                    end else begin
+                        transaccion.print("Checker: Escritura");
+                        emul_fifo.push_back(transaccion);
+                        chkr_sb_mbx.put(to_sb);
+                    end
                       
                     if(0 !== emul_fifo.size()) begin 
                                       
@@ -84,19 +97,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         to_sb.print("Checker: Underflow");
                         chkr_sb_mbx.put(to_sb);
                     end
-                    if (emul_fifo.size() == depth) begin
-                        auxiliar = emul_fifo.pop_front();
-                        to_sb.dato_enviado = auxiliar.dato;
-                        to_sb.tiempo_push = auxiliar.tiempo;
-                        to_sb.overflow = 1;
-                        to_sb.print("Checker: Overflow");
-                        chkr_sb_mbx.put(to_sb);
-                        emul_fifo.push_back(transaccion);
-                    end else begin
-                        transaccion.print("Checker: Escritura");
-                        emul_fifo.push_back(transaccion);
-                        chkr_sb_mbx.put(to_sb);
-                    end
+                    
                     
                     transaccion.print("Checker: ");
                     $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
