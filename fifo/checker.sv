@@ -81,11 +81,11 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         
                     end else begin 
                         //to_sb.dato_enviado = auxiliar.dato;
-                        emul_fifo.pop_front(); 
+                        
                         to_sb.tiempo_pop = transaccion.tiempo;
                         to_sb.underflow = 1;
                         to_sb.print("Checker: Underflow");
-                        emul_fifo.push_back(transaccion);
+                        
                     end
                     chkr_sb_mbx.put(to_sb);
                     
