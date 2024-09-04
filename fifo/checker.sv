@@ -74,10 +74,10 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         to_sb.overflow = 1;
                         to_sb.print("Checker: Overflow");
                         chkr_sb_mbx.put(to_sb);
-                        emul_fifo.push_back(transaccion);
+                        
                     end else begin
                         transaccion.print("Checker: Escritura");
-                        emul_fifo.push_back(transaccion);
+                        
                         chkr_sb_mbx.put(to_sb);
                     end
                     auxiliar = emul_fifo.pop_front();
@@ -97,7 +97,7 @@ class checker_c #(parameter width = 16, parameter depth = 8);
                         to_sb.print("Checker: Underflow");
                         chkr_sb_mbx.put(to_sb);
                     end
-                    
+                    emul_fifo.push_back(transaccion);
                     
                     transaccion.print("Checker: ");
                     $display("Dato_leido= %h, Dato_Esperado %h",transaccion.dato, auxiliar.dato);
