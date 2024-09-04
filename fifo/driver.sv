@@ -55,7 +55,7 @@ class driver #(parameter width = 16);
                     vif.pop = 0;
                     vif.push = 0;
                     transaction.tiempo = $time;
-                    transaction.dato = vif.dato_out;
+                    //transaction.dato = vif.dato_out;
                     drv_chkr_mbx.put(transaction);
                     transaction.print("Driver: Transaacion ejecutada");
                     
