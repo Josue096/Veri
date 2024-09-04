@@ -66,11 +66,11 @@ class checker_c #(parameter width = 16, parameter depth = 8);
 
                 end
                 lectura_escritura: begin
-                    
+                    auxiliar = emul_fifo.pop_front();
                     emul_fifo.push_back(transaccion);
                     chkr_sb_mbx.put(to_sb);
                     
-                    auxiliar = emul_fifo.pop_front();  
+                      
                     if(0 !== emul_fifo.size()) begin 
                                       
                         to_sb.dato_enviado = auxiliar.dato;
