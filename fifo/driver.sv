@@ -49,7 +49,7 @@ class driver #(parameter width = 16);
                 end
 
                 lectura_escritura: begin  
-            
+                    transaction.dato = vif.dato_in ;
                     vif.push = 1;  
                     @(posedge vif.clk);   
                     vif.pop = 1;
