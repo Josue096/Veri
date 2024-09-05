@@ -33,7 +33,7 @@ class agent #(parameter width = 16, parameter depth = 8);
                             transaccion.print("Agente: Transaccion creada");
                             agnt_drv_mbx.put(transaccion);
                         end
-                        /*for (int i = 0; i < num_transacciones; i++) begin
+                        for (int i = 0; i < num_transacciones; i++) begin
                             transaccion = new;
                             transaccion.randomize();
                             tpo_spec = lectura;
@@ -41,7 +41,7 @@ class agent #(parameter width = 16, parameter depth = 8);
                             transaccion.print("Agente: Transaccion creada");
                             agnt_drv_mbx.put(transaccion);
                         end 
-                        */for (int i = 0; i < num_transacciones; i++) begin
+                        for (int i = 0; i < num_transacciones; i++) begin
                             transaccion = new;
                             transaccion.max_retardo = max_retardo;
                             transaccion.randomize();
